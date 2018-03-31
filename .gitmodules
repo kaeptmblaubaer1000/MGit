@@ -1,0 +1,4 @@
+[submodule "jgit"]
+	path = jgit
+	url = ../../eclipse/jgit.git
+	branch = stable-4.11
