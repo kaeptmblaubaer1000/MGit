@@ -1,4 +1,4 @@
-package me.sheimi.android.utils;
+package com.manichord.mgit.utils;
 
 import static org.junit.Assert.assertEquals;
 

@@ -16,6 +16,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
+import com.manichord.mgit.utils.CodeGuesser;
+
 import org.eclipse.jgit.diff.DiffEntry;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.revwalk.RevCommit;
@@ -27,7 +29,6 @@ import java.io.OutputStream;
 import java.util.List;
 
 import me.sheimi.android.activities.SheimiFragmentActivity;
-import me.sheimi.android.utils.CodeGuesser;
 import me.sheimi.android.utils.FsUtils;
 import me.sheimi.android.utils.Profile;
 import me.sheimi.sgit.R;
