@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.support.annotation.StringRes
+import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import me.sheimi.android.views.SheimiDialogFragment
 import me.sheimi.sgit.R
@@ -13,14 +14,14 @@ import org.acra.ACRA
 
 class ExceptionDialog : SheimiDialogFragment() {
 
-    private lateinit var mActivity: RepoListActivity
+    private lateinit var mActivity: AppCompatActivity
     private lateinit var mThrowable: Throwable
     @StringRes
     private var mErrorRes: Int = 0
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
-        mActivity = activity as RepoListActivity
+        mActivity = activity as AppCompatActivity
 
         val builder = AlertDialog.Builder(mActivity)
         val inflater = mActivity.layoutInflater
