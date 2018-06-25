@@ -3,6 +3,7 @@ package me.sheimi.sgit.dialogs;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,7 @@ public class InitDialog extends SheimiDialogFragment implements
     private Repo mRepo;
     private PreferenceHelper mPrefsHelper;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreateDialog(savedInstanceState);

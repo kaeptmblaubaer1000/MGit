@@ -1,4 +1,4 @@
-package com.manichord.mgit.common;
+package com.manichord.mgit.common
 
 interface OnClickListener {
     fun onClick()

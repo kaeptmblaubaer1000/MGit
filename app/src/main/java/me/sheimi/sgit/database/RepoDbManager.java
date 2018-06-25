@@ -23,7 +23,7 @@ public class RepoDbManager {
     private SQLiteDatabase mReadableDatabase;
     private RepoDbHelper mDbHelper;
 
-    private static Map<String, Set<RepoDbObserver>> mObservers = new HashMap<String, Set<RepoDbObserver>>();
+    private static Map<String, Set<RepoDbObserver>> mObservers = new HashMap<>();
 
     private RepoDbManager(Context context) {
         mDbHelper = new RepoDbHelper(context);
@@ -41,7 +41,7 @@ public class RepoDbManager {
     public static void registerDbObserver(String table, RepoDbObserver observer) {
         Set<RepoDbObserver> set = mObservers.get(table);
         if (set == null) {
-            set = new HashSet<RepoDbObserver>();
+            set = new HashSet<>();
             mObservers.put(table, set);
         }
         set.add(observer);

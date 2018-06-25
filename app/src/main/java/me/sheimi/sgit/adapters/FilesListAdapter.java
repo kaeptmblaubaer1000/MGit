@@ -1,5 +1,14 @@
 package me.sheimi.sgit.adapters;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.util.Arrays;
@@ -7,13 +16,6 @@ import java.util.Comparator;
 
 import me.sheimi.android.utils.Profile;
 import me.sheimi.sgit.R;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.ArrayAdapter;
 
 /**
  * Created by sheimi on 8/18/13.
@@ -28,8 +30,9 @@ public class FilesListAdapter extends ArrayAdapter<File> {
         mFileFilter = fileFilter;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
         FilesListItemHolder holder;
@@ -64,7 +67,7 @@ public class FilesListAdapter extends ArrayAdapter<File> {
     public void setDir(File dir) {
         mDir = dir;
         clear();
-        File[] files = null;
+        File[] files;
         if (mFileFilter == null) {
             files = dir.listFiles();
         } else {

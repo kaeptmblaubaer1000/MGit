@@ -1,23 +1,24 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
         android:id="@+id/action_search"
-        android:actionViewClass="android.widget.SearchView"
         android:icon="@drawable/ic_search"
-        android:showAsAction="always|collapseActionView"
-        android:title="@string/action_search"/>
+        android:title="@string/action_search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always|collapseActionView" />
     <item
         android:id="@+id/action_new"
         android:icon="@drawable/ic_content_new"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_clone"/>
+        android:title="@string/action_clone"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_import_repo"
-        android:showAsAction="never"
-        android:title="@string/action_import_repo"/>
+        android:title="@string/action_import_repo"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_action_settings"
         android:title="@string/action_settings"
-        android:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 </menu>

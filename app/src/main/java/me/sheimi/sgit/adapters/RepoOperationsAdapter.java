@@ -1,9 +1,7 @@
 package me.sheimi.sgit.adapters;
 
-import me.sheimi.sgit.R;
-import me.sheimi.sgit.activities.RepoDetailActivity;
-import me.sheimi.sgit.adapters.RepoOperationsAdapter.DrawerItem;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +9,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import me.sheimi.sgit.R;
+import me.sheimi.sgit.activities.RepoDetailActivity;
+import me.sheimi.sgit.adapters.RepoOperationsAdapter.DrawerItem;
 
 public class RepoOperationsAdapter extends ArrayAdapter<DrawerItem>
         implements OnItemClickListener {
@@ -20,8 +22,9 @@ public class RepoOperationsAdapter extends ArrayAdapter<DrawerItem>
         setupDrawerItem();
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             convertView = newView(getContext(), parent);
         }

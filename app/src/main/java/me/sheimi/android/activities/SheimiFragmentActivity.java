@@ -27,7 +27,7 @@ import me.sheimi.android.utils.Profile;
 import me.sheimi.sgit.R;
 import me.sheimi.sgit.dialogs.DummyDialogListener;
 
-public class SheimiFragmentActivity extends AppCompatActivity {
+public abstract class SheimiFragmentActivity extends AppCompatActivity {
 
     public static interface OnBackClickListener {
         public boolean onClick();
@@ -152,7 +152,7 @@ public class SheimiFragmentActivity extends AppCompatActivity {
 
     public void promptForPassword(OnPasswordEntered onPasswordEntered,
             int errorId) {
-        promptForPassword(onPasswordEntered, errorId);
+        promptForPassword(onPasswordEntered, getString(errorId));
     }
 
     public void promptForPassword(final OnPasswordEntered onPasswordEntered,

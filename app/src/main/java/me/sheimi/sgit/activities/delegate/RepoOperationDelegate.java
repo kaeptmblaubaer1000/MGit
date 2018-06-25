@@ -40,7 +40,7 @@ import static me.sheimi.sgit.repo.tasks.repo.DeleteFileFromRepoTask.*;
 public class RepoOperationDelegate {
     private Repo mRepo;
     private RepoDetailActivity mActivity;
-    private ArrayList<RepoAction> mActions = new ArrayList<RepoAction>();
+    private ArrayList<RepoAction> mActions = new ArrayList<>();
 
     public RepoOperationDelegate(Repo repo, RepoDetailActivity activity) {
         mRepo = repo;

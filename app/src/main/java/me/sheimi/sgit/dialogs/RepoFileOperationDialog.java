@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import static me.sheimi.sgit.repo.tasks.repo.DeleteFileFromRepoTask.*;
 
@@ -26,6 +27,7 @@ public class RepoFileOperationDialog extends SheimiDialogFragment {
     public static final String FILE_PATH = "file path";
     private static String mFilePath;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreateDialog(savedInstanceState);

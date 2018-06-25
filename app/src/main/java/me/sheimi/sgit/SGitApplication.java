@@ -1,5 +1,6 @@
 package me.sheimi.sgit;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,6 +20,7 @@ import timber.log.Timber;
 /**
  * Custom Application Singleton
  */
+@SuppressLint("Registered") // If debug build type is enabled.
 @ReportsCrashes(
     mailTo = "mgit@manichord.com",
     mode = ReportingInteractionMode.TOAST,

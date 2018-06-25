@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -208,8 +209,9 @@ public class BranchChooserActivity extends SheimiFragmentActivity implements Act
             super(context, 0);
         }
 
+        @NonNull
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             ListItemHolder holder;
             if (convertView == null) {

@@ -1,14 +1,14 @@
 package me.sheimi.sgit.repo.tasks.repo;
 
+import org.eclipse.jgit.api.LogCommand;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.revwalk.RevCommit;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import me.sheimi.sgit.database.models.Repo;
 import me.sheimi.sgit.exception.StopTaskException;
-
-import org.eclipse.jgit.api.LogCommand;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.revwalk.RevCommit;
 
 public class GetCommitTask extends RepoOpTask {
 
@@ -48,7 +48,7 @@ public class GetCommitTask extends RepoOpTask {
             if (mFile != null)
                 cmd.addPath(mFile);
             Iterable<RevCommit> commits = cmd.call();
-            mResult = new ArrayList<RevCommit>();
+            mResult = new ArrayList<>();
             for (RevCommit commit : commits) {
                 mResult.add(commit);
             }

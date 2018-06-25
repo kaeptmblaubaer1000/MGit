@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,6 @@ import java.io.File;
 import java.io.IOException;
 
 import me.sheimi.android.activities.SheimiFragmentActivity;
-import me.sheimi.android.utils.BasicFunctions;
 import me.sheimi.android.utils.CodeGuesser;
 import me.sheimi.android.utils.Profile;
 import me.sheimi.sgit.R;
@@ -40,7 +40,7 @@ public class ViewFileFragment extends BaseFragment {
     private boolean mEditMode = false;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_view_file, container, false);
 
@@ -227,7 +227,7 @@ public class ViewFileFragment extends BaseFragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putBoolean("EditMode", mEditMode);
     }

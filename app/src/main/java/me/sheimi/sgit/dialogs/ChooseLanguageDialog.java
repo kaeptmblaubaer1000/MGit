@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 /**
  * Created by sheimi on 8/16/13.
@@ -18,6 +19,7 @@ public class ChooseLanguageDialog extends SheimiDialogFragment {
 
     private ViewFileActivity mActivity;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreateDialog(savedInstanceState);

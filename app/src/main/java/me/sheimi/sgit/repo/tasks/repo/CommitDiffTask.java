@@ -57,7 +57,7 @@ public class CommitDiffTask extends RepoOpTask {
         if (!result) {
             return false;
         }
-        mDiffStrs = new ArrayList<String>(mDiffEntries.size());
+        mDiffStrs = new ArrayList<>(mDiffEntries.size());
         for (DiffEntry diffEntry : mDiffEntries) {
             try {
                 String diffStr = parseDiffEntry(diffEntry);

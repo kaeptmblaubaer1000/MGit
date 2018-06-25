@@ -1,13 +1,13 @@
 package me.sheimi.sgit.repo.tasks.repo;
 
+import org.eclipse.jgit.api.MergeCommand;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.lib.Ref;
+
 import me.sheimi.android.utils.BasicFunctions;
 import me.sheimi.sgit.R;
 import me.sheimi.sgit.database.models.Repo;
 import me.sheimi.sgit.exception.StopTaskException;
-
-import org.eclipse.jgit.api.MergeCommand;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.lib.Ref;
 
 public class MergeTask extends RepoOpTask {
 
@@ -64,7 +64,7 @@ public class MergeTask extends RepoOpTask {
         if (mAutoCommit) {
             String b1 = mRepo.getBranchName();
             String b2 = mCommit.getName();
-            String msg = null;
+            String msg;
             if (b1 == null) {
                 msg = String.format("Merge branch '%s'",
                         Repo.getCommitDisplayName(b2));

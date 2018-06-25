@@ -1,18 +1,19 @@
 package me.sheimi.sgit.dialogs;
 
-import java.io.File;
-
-import me.sheimi.android.utils.FsUtils;
-import me.sheimi.android.views.SheimiDialogFragment;
-import me.sheimi.sgit.R;
-import me.sheimi.sgit.activities.explorer.PrivateKeyManageActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.io.File;
+
+import me.sheimi.android.views.SheimiDialogFragment;
+import me.sheimi.sgit.R;
+import me.sheimi.sgit.activities.explorer.PrivateKeyManageActivity;
 import me.sheimi.sgit.ssh.PrivateKeyUtils;
 
 /**
@@ -28,6 +29,7 @@ public class RenameKeyDialog extends SheimiDialogFragment implements
     private PrivateKeyManageActivity mActivity;
     public static final String FROM_PATH = "from path";
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreateDialog(savedInstanceState);
@@ -96,12 +98,12 @@ public class RenameKeyDialog extends SheimiDialogFragment implements
             return;
         }
         mFromFile.renameTo(file);
-	try {
-	    PrivateKeyUtils.getPublicKey(mFromFile).renameTo(PrivateKeyUtils.getPublicKey(file));
-	} catch (Exception e) {
-	    //TODO 
-	    e.printStackTrace();
-	}
+        try {
+            PrivateKeyUtils.getPublicKey(mFromFile).renameTo(PrivateKeyUtils.getPublicKey(file));
+        } catch (Exception e) {
+            //TODO
+            e.printStackTrace();
+        }
         mActivity.refreshList();
         dismiss();
     }

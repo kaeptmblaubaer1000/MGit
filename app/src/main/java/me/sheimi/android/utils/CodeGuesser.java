@@ -77,10 +77,10 @@ public class CodeGuesser {
             { "XML", "application/xml", "xml" },
             { "YAML", "text/x-yaml", "yml", "yaml" }, };
 
-    private static Map<String, String> mFilenameExtensionMap = new HashMap<String, String>();
-    private static List<String> mSupportLanguageList = new ArrayList<String>();
+    private static Map<String, String> mFilenameExtensionMap = new HashMap<>();
+    private static List<String> mSupportLanguageList = new ArrayList<>();
 
-    private static Map<String, String> mDisplayTagMap = new HashMap<String, String>();
+    private static Map<String, String> mDisplayTagMap = new HashMap<>();
 
     static {
         for (int i = 0; i < FILENAME_EXTENSION_ARRAY.length; ++i) {

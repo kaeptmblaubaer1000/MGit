@@ -1,5 +1,23 @@
 package me.sheimi.sgit.fragments;
 
+import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.ActionMode;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import org.eclipse.jgit.revwalk.RevCommit;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,25 +30,6 @@ import me.sheimi.sgit.activities.RepoDetailActivity;
 import me.sheimi.sgit.adapters.CommitsListAdapter;
 import me.sheimi.sgit.database.models.Repo;
 import me.sheimi.sgit.dialogs.CheckoutDialog;
-
-import org.eclipse.jgit.revwalk.RevCommit;
-
-import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.ActionMode;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SearchView;
 
 /**
  * Created by sheimi on 8/5/13.
@@ -45,7 +44,7 @@ public class CommitsFragment extends BaseFragment implements
     private CommitsListAdapter mCommitsListAdapter;
 
     private ActionMode mActionMode;
-    private Set<Integer> mChosenItem = new HashSet<Integer>();
+    private Set<Integer> mChosenItem = new HashSet<>();
     private Repo mRepo;
     private String mFile;
     private static final String FILE = "commit_file";
@@ -68,8 +67,8 @@ public class CommitsFragment extends BaseFragment implements
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_commits, container, false);
         if (getRawActivity() instanceof RepoDetailActivity) {
             ((RepoDetailActivity) getRawActivity()).setCommitsFragment(this);
@@ -135,10 +134,10 @@ public class CommitsFragment extends BaseFragment implements
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(IS_ACTION_MODE, mActionMode != null);
-        ArrayList<Integer> itemsList = new ArrayList<Integer>(mChosenItem);
+        ArrayList<Integer> itemsList = new ArrayList<>(mChosenItem);
         outState.putIntegerArrayList(CHOSEN_ITEM, itemsList);
     }
 

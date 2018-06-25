@@ -1,26 +1,19 @@
 package me.sheimi.sgit.activities.delegate.actions;
 
-import me.sheimi.android.utils.Profile;
-import me.sheimi.sgit.R;
-import me.sheimi.sgit.activities.RepoDetailActivity;
-import me.sheimi.sgit.database.models.Repo;
-import me.sheimi.sgit.dialogs.DummyDialogListener;
-import me.sheimi.sgit.repo.tasks.SheimiAsyncTask.AsyncTaskPostCallback;
-import me.sheimi.sgit.repo.tasks.repo.CommitChangesTask;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
-import android.widget.AutoCompleteTextView;
-import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
@@ -32,6 +25,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+
+import me.sheimi.android.utils.Profile;
+import me.sheimi.sgit.R;
+import me.sheimi.sgit.activities.RepoDetailActivity;
+import me.sheimi.sgit.database.models.Repo;
+import me.sheimi.sgit.dialogs.DummyDialogListener;
+import me.sheimi.sgit.repo.tasks.SheimiAsyncTask.AsyncTaskPostCallback;
+import me.sheimi.sgit.repo.tasks.repo.CommitChangesTask;
 
 public class CommitAction extends RepoAction {
 
@@ -67,7 +68,7 @@ public class CommitAction extends RepoAction {
         Author (String username, String email) {
             mName = username;
             mEmail = email;
-            mKeywords = new ArrayList<String> ();
+            mKeywords = new ArrayList<>();
             Collections.addAll(mKeywords, mName.toLowerCase().split(SPLIT_KEYWORDS));
             Collections.addAll(mKeywords, mEmail.toLowerCase().split(SPLIT_KEYWORDS));
         }
@@ -102,12 +103,12 @@ public class CommitAction extends RepoAction {
         }
 
         @Override
-        public int compareTo(Author another) {
+        public int compareTo(@NonNull Author author) {
             int c1;
-            c1 = mName.compareTo(another.mName);
+            c1 = mName.compareTo(author.mName);
             if (c1 != 0)
                 return c1;
-            return mEmail.compareTo(another.mEmail);
+            return mEmail.compareTo(author.mEmail);
         }
 
         public boolean matches(String constraint) {
@@ -167,7 +168,7 @@ public class CommitAction extends RepoAction {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            ViewHolder holder = null;
+            ViewHolder holder;
 
             if (convertView == null) {
 
@@ -196,10 +197,10 @@ public class CommitAction extends RepoAction {
                 @Override
                 protected FilterResults performFiltering(CharSequence constraint) {
                     FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
-                    List<Author> FilteredArrList = new ArrayList<Author>();
+                    List<Author> FilteredArrList = new ArrayList<>();
 
                     if (mOriginalValues == null) {
-                        mOriginalValues = new ArrayList<Author>(arrayList); // saves the original data in mOriginalValues
+                        mOriginalValues = new ArrayList<>(arrayList); // saves the original data in mOriginalValues
                     }
 
                     if (constraint == null || constraint.length() == 0) {
@@ -234,7 +235,7 @@ public class CommitAction extends RepoAction {
         final CheckBox isAmend = (CheckBox) layout.findViewById(R.id.isAmend);
         final CheckBox autoStage = (CheckBox) layout
                 .findViewById(R.id.autoStage);
-	    HashSet<Author> authors = new HashSet<Author>();
+	    HashSet<Author> authors = new HashSet<>();
         try {
             Iterable<RevCommit> commits = mRepo.getGit().log().setMaxCount(500).call();
             for (RevCommit commit : commits) {
@@ -248,7 +249,7 @@ public class CommitAction extends RepoAction {
                 && profileEmail != null && !profileEmail.equals("")) {
             authors.add(new Author(profileUsername, profileEmail));
         }
-        ArrayList<Author> authorList = new ArrayList<Author>(authors);
+        ArrayList<Author> authorList = new ArrayList<>(authors);
         Collections.sort(authorList);
 	    AuthorsAdapter adapter = new AuthorsAdapter(mActivity, authorList);
 	    commitAuthor.setAdapter(adapter);

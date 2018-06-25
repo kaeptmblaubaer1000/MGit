@@ -1,21 +1,5 @@
 package me.sheimi.sgit.adapters;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-
-import me.sheimi.android.activities.SheimiFragmentActivity;
-import me.sheimi.android.utils.BasicFunctions;
-import me.sheimi.sgit.R;
-import com.manichord.mgit.repolist.RepoListActivity;
-import me.sheimi.sgit.activities.RepoDetailActivity;
-import me.sheimi.sgit.database.RepoContract;
-import me.sheimi.sgit.database.RepoDbManager;
-import me.sheimi.sgit.database.models.Repo;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,6 +9,7 @@ import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +20,23 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.manichord.mgit.repolist.RepoListActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+
+import me.sheimi.android.activities.SheimiFragmentActivity;
+import me.sheimi.android.utils.BasicFunctions;
+import me.sheimi.sgit.R;
+import me.sheimi.sgit.activities.RepoDetailActivity;
+import me.sheimi.sgit.database.RepoContract;
+import me.sheimi.sgit.database.RepoDbManager;
+import me.sheimi.sgit.database.models.Repo;
 
 /**
  * Created by sheimi on 8/6/13.
@@ -89,8 +91,9 @@ public class RepoListAdapter extends ArrayAdapter<Repo> implements
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             convertView = newView(getContext(), parent);
         }
@@ -221,7 +224,7 @@ public class RepoListAdapter extends ArrayAdapter<Repo> implements
                     //get activities that open this url
                     List<ResolveInfo> activitiesToOpenUrlIntentList = context.getPackageManager().queryIntentActivities(openUrlIntent, 0);
 
-                    List<Intent> intentList = new ArrayList<Intent>();
+                    List<Intent> intentList = new ArrayList<>();
 
                     //Get application info to exclude it from the intent chooser
                     ApplicationInfo applicationInfo = context.getApplicationInfo();

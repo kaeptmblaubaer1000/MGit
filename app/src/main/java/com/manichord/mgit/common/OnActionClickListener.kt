@@ -1,4 +1,4 @@
-package com.manichord.mgit.common;
+package com.manichord.mgit.common
 
 /**
  * For your list item on click listening pleasure

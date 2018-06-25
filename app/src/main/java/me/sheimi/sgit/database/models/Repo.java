@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
 import org.eclipse.jgit.api.Git;
@@ -76,7 +77,7 @@ public class Repo implements Comparable<Repo>, Serializable {
     public static final String EXTERNAL_PREFIX = "external://";
     public static final String REPO_DIR = "repo";
 
-    private static SparseArray<RepoOpTask> mRepoTasks = new SparseArray<RepoOpTask>();
+    private static SparseArray<RepoOpTask> mRepoTasks = new SparseArray<>();
 
     public Repo(Cursor cursor) {
         mID = RepoContract.getRepoID(cursor);
@@ -114,7 +115,7 @@ public class Repo implements Comparable<Repo>, Serializable {
     }
 
     public static List<Repo> getRepoList(Context context, Cursor cursor) {
-        List<Repo> repos = new ArrayList<Repo>();
+        List<Repo> repos = new ArrayList<>();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             repos.add(new Repo(cursor));
@@ -258,7 +259,7 @@ public class Repo implements Comparable<Repo>, Serializable {
     }
 
     @Override
-    public int compareTo(Repo repo) {
+    public int compareTo(@NonNull Repo repo) {
         return repo.getID() - getID();
     }
 
@@ -341,8 +342,8 @@ public class Repo implements Comparable<Repo>, Serializable {
 
     public String[] getBranches() {
         try {
-            Set<String> branchSet = new HashSet<String>();
-            List<String> branchList = new ArrayList<String>();
+            Set<String> branchSet = new HashSet<>();
+            List<String> branchList = new ArrayList<>();
             List<Ref> localRefs = getGit().branchList().call();
             for (Ref ref : localRefs) {
                 branchSet.add(ref.getName());
@@ -401,7 +402,7 @@ public class Repo implements Comparable<Repo>, Serializable {
         } catch (GitAPIException|StopTaskException e) {
             Timber.e(e);
         }
-        return new ArrayList<Ref>();
+        return new ArrayList<>();
     }
 
     public String[] getTags() {
@@ -576,11 +577,11 @@ public class Repo implements Comparable<Repo>, Serializable {
         try {
             StoredConfig config = getStoredConfig();
             Set<String> remotes = config.getSubsections("remote");
-            mRemotes = new HashSet<String>(remotes);
+            mRemotes = new HashSet<>(remotes);
             return mRemotes;
         } catch (StopTaskException e) {
         }
-        return new HashSet<String>();
+        return new HashSet<>();
     }
 
     public void setRemote(String remote, String url) throws IOException {

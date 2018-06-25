@@ -1,6 +1,18 @@
 package me.sheimi.sgit.adapters;
 
-import java.security.Timestamp;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import org.eclipse.jgit.lib.PersonIdent;
+import org.eclipse.jgit.revwalk.RevCommit;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,23 +26,6 @@ import me.sheimi.sgit.R;
 import me.sheimi.sgit.database.models.Repo;
 import me.sheimi.sgit.repo.tasks.repo.GetCommitTask;
 import me.sheimi.sgit.repo.tasks.repo.GetCommitTask.GetCommitCallback;
-
-import org.eclipse.jgit.lib.PersonIdent;
-import org.eclipse.jgit.revwalk.RevCommit;
-
-import android.content.Context;
-import android.os.AsyncTask;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Filterable;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.ArrayAdapter;
-
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Created by sheimi on 8/18/13.
@@ -103,7 +98,7 @@ public class CommitsListAdapter extends BaseAdapter {
         mContext = context;
         mChosenItems = chosenItems;
         mRepo = repo;
-        mAll = new ArrayList<RevCommit>();
+        mAll = new ArrayList<>();
         mFiltered = null;
         mFilter = null;
     }

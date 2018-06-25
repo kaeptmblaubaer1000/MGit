@@ -10,6 +10,7 @@ import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.view.MenuItemCompat;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -69,7 +70,7 @@ public class RepoListActivity extends SheimiFragmentActivity {
         binding.setViewModel(viewModel);
         binding.setClickHandler(new OnActionClickListener() {
             @Override
-            public void onActionClick(String action) {
+            public void onActionClick(@NonNull String action) {
                 if (ClickActions.CLONE.name().equals(action)) {
                     cloneRepo();
                 } else {

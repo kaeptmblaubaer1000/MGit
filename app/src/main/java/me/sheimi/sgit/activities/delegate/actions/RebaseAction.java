@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class RebaseAction extends RepoAction {
         private ListView mBranchTagList;
         private BranchTagListAdapter mAdapter;
 
+        @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             super.onCreateDialog(savedInstanceState);
@@ -100,8 +102,9 @@ public class RebaseAction extends RepoAction {
                 super(context, 0);
             }
 
+            @NonNull
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
+            public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 ListItemHolder holder;
                 if (convertView == null) {

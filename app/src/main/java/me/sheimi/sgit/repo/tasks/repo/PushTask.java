@@ -148,6 +148,7 @@ public class PushTask extends RepoRemoteOpTask {
                 msg = String.format("[%s] Remote ref update was rejected,"
                         + " as it would cause non fast-forward update.\n",
                         update.getRemoteName());
+                break;
             case REJECTED_OTHER_REASON:
                 String reason = update.getMessage();
                 if (reason == null || reason.isEmpty()) {

@@ -3,6 +3,7 @@ package me.sheimi.sgit.activities.delegate.actions;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,6 +56,7 @@ public class PushAction extends RepoAction {
         private ListView mRemoteList;
         private ArrayAdapter<String> mAdapter;
 
+        @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             super.onCreateDialog(savedInstanceState);
@@ -72,8 +74,8 @@ public class PushAction extends RepoAction {
             mForcePush = (CheckBox) layout.findViewById(R.id.forcePush);
             mRemoteList = (ListView) layout.findViewById(R.id.remoteList);
 
-            mAdapter = new ArrayAdapter<String>(mActivity,
-                    android.R.layout.simple_list_item_1);
+            mAdapter = new ArrayAdapter<>(mActivity,
+                android.R.layout.simple_list_item_1);
             Set<String> remotes = mRepo.getRemotes();
             mAdapter.addAll(remotes);
             mRemoteList.setAdapter(mAdapter);
