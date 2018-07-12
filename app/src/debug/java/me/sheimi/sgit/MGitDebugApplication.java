@@ -12,23 +12,13 @@ import timber.log.Timber;
  * To disable Stetho console logging change the setting in src/debug/res/values/bools.xml
  */
 public class MGitDebugApplication extends SGitApplication {
-
-    private static final String LOGTAG = MGitDebugApplication.class.getSimpleName();
-
     @Override
-    public void onCreate() {
-        super.onCreate();
-
+    protected Timber.Tree makeTimberTree() {
         Stetho.initializeWithDefaults(this);
 
-        Timber.plant(new ConfigurableStethoTree(new ConfigurableStethoTree.Configuration.Builder()
+        return new ConfigurableStethoTree(new ConfigurableStethoTree.Configuration.Builder()
             .showTags(true)
             .minimumPriority(Log.DEBUG)
-            .build()));
-
-        Log.i(LOGTAG, "Using Stetho console logging");
-
-        Timber.i("Initialised Stetho debugging");
+            .build());
     }
-
 }

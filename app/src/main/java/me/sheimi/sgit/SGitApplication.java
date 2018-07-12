@@ -60,6 +60,11 @@ public class SGitApplication extends Application {
         if (!BuildConfig.DEBUG) {
             ACRA.init(this);
         }
+        Timber.plant(makeTimberTree());
+    }
+
+    protected Timber.Tree makeTimberTree() {
+        return new Timber.DebugTree();
     }
 
 
