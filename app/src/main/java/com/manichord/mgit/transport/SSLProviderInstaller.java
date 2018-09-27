@@ -33,10 +33,11 @@ public class SSLProviderInstaller {
             switch (pos) {
                 case 1:
                     SSLContext sslContext = SSLContext.getInstance("Default");
+                    SSLSocketFactory factory = new MGitSSLSocketFactory(sslContext.getSocketFactory());
                     //noinspection JavaReflectionMemberAccess
                     Field field = SSLSocketFactory.class.getDeclaredField("defaultSocketFactory");
                     field.setAccessible(true);
-                    field.set(null, sslContext.getSocketFactory());
+                    field.set(null, factory);
                     //noinspection JavaReflectionMemberAccess
                     field = SSLServerSocketFactory.class.getDeclaredField("defaultServerSocketFactory");
                     field.setAccessible(true);
@@ -44,7 +45,7 @@ public class SSLProviderInstaller {
                     Security.setProperty("ssl.SocketFactory.provider", "org.conscrypt.OpenSSLSocketFactoryImpl");
                     Security.setProperty("ssl.ServerSocketFactory.provider", "org.conscrypt.OpenSSLServerSocketFactoryImpl");
                     SSLContext.setDefault(sslContext);
-                    HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+                    HttpsURLConnection.setDefaultSSLSocketFactory(factory);
                     Timber.i("Installed default security provider MGit_OpenSSL");
 
                     // This fallthrough is for the above case a break, and since we want to exclude -1 this is great.
