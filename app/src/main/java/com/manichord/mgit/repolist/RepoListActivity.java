@@ -247,7 +247,7 @@ public class RepoListActivity extends SheimiFragmentActivity {
 
     private void initUpdatedSSL() {
         if (Build.VERSION.SDK_INT < 21) {
-            SSLProviderInstaller.install(this);
+            SSLProviderInstaller.install();
         }
         MGitHttpConnectionFactory.install();
         Timber.i("Installed custom HTTPS factory");

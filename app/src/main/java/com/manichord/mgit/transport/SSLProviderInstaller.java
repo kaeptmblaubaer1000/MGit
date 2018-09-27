@@ -1,7 +1,5 @@
 package com.manichord.mgit.transport;
 
-import android.content.Context;
-
 import org.conscrypt.Conscrypt;
 
 import java.lang.reflect.Field;
@@ -26,7 +24,7 @@ public class SSLProviderInstaller {
     private static Provider provider = null;
 
     // The other implementation uses the param.
-    public static synchronized void install(@SuppressWarnings("unused") Context ctx) {
+    public static synchronized void install() {
         if (provider == null) {
             provider = Conscrypt.newProvider("MGit_OpenSSL");
         }
